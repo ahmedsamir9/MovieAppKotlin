@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <data>
+        <variable
+            name="movie"
+            type="com.example.movieapp.model.Movie" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+   android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseCompoundDrawables">
+
+        <com.jackandphantom.circularimageview.RoundedImage
+            android:layout_width="@dimen/_140sdp"
+            android:layout_height="@dimen/_190sdp"
+            android:layout_gravity="center"
+            setImageByGlide="@{movie.posterPath}"/>
+
+        <TextView
+            android:id="@+id/movie_item_name"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@{movie.title}"
+            tools:textColor="#000000"
+            tools:text="ssssssssssssssssssssssssssss"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/_23sdp"
+        android:layout_height="@dimen/_23sdp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/star"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_17sdp"
+        android:textColor="@color/colorAccent"
+        android:text="@{Double.toString(movie.voteAverage)}"
+        android:textSize="@dimen/_15sdp"
+        android:textStyle="bold"
+        tools:textColor="#000000"
+        tools:text="10"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">movie app</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="upcoming_movies">UpComing Movies</string>
+    <string name="text_retry">Retry</string>
+    <string name="topRated_movies">Top Rated Movies</string>
+
 </resources>
