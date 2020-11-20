@@ -1,39 +1,37 @@
-package com.example.movieapp.ui.HomeScreen
+package com.example.movieapp.ui.HomeScreen.Adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.DifferCallback
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.databinding.MovieItemBinding
 import com.example.movieapp.model.Movie
-import java.util.zip.Inflater
 
-class UpCommingAdapter:PagingDataAdapter<Movie,UpCommingAdapter.UpComingViewHolder>(
-    upComingDiffUtils) {
+class MainAdapter:PagingDataAdapter<Movie, MainAdapter.MainViewHolder>(
+    upComingDiffUtils
+) {
 
 
 
-class UpComingViewHolder(val binding :MovieItemBinding) :RecyclerView.ViewHolder(binding.root){
+class MainViewHolder(val binding :MovieItemBinding) :RecyclerView.ViewHolder(binding.root){
     fun onBind(item:Movie){
         binding.movie =item
     }
 
 }
 
-    override fun onBindViewHolder(holder: UpComingViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         getItem(position)?.let {
             holder.onBind(it)
         }
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UpComingViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = MovieItemBinding.inflate(inflater,parent,false)
-        return UpComingViewHolder(binding)
+        return MainViewHolder(binding)
     }
     companion object{
         val upComingDiffUtils = object :DiffUtil.ItemCallback<Movie>(){

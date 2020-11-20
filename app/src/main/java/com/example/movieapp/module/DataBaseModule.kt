@@ -23,4 +23,7 @@ object DataBaseModule{
     @Singleton
     @Provides
     fun provideMoviesRemoteKeysDao(dataBase: AppDatabase)=dataBase.movieRemoteKeys()
+    @Singleton
+    @Provides
+    fun provideUpComingMoviesDao(dataBase: AppDatabase)=dataBase.upComingMoviesDao()
 }
