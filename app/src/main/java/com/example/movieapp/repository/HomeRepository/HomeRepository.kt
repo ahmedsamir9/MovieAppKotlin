@@ -7,6 +7,7 @@ import com.example.movieapp.DB.AppDatabase
 import com.example.movieapp.api.MoviesServices
 import com.example.movieapp.model.Movie
 import com.example.movieapp.model.MovieResponse
+import com.example.movieapp.model.PlayingMovies
 import com.example.movieapp.model.UpComingMovies
 import com.example.movieapp.utils.ApiResult
 import com.example.movieapp.utils.Constant.PLAYING_NOW_CATEGORY
@@ -63,13 +64,13 @@ data class HomeRepository constructor(private val localDataSource:AppDatabase, p
             pagingSourceFactory = {localDataSource.upComingMoviesDao().getMovies()}
         ).flow
     }
-     fun getPlayNowMovies(): Flow<PagingData<Movie>> {
+     fun getPlayNowMovies(): Flow<PagingData<PlayingMovies>> {
         return Pager(
             config =  PagingConfig(
                 pageSize = 10,
                 enablePlaceholders = false) ,
-            remoteMediator = MoviesRemoteMediator(PLAYING_NOW_CATEGORY,remoteDataSource,localDataSource),
-            pagingSourceFactory = {localDataSource.movieDao().getPlayingMovies(PLAYING_NOW_CATEGORY)}
+            remoteMediator = PlayIngNowRemoteMediotrs(PLAYING_NOW_CATEGORY,remoteDataSource,localDataSource),
+            pagingSourceFactory = {localDataSource.playingNowMoviesDao().getMovies()}
         ).flow
     }
 

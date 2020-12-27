@@ -7,6 +7,7 @@ import androidx.lifecycle.*
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.movieapp.model.Movie
+import com.example.movieapp.model.PlayingMovies
 
 import com.example.movieapp.model.UpComingMovies
 import com.example.movieapp.repository.HomeRepository.HomeRepository
@@ -21,14 +22,14 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class MainViewModel @ViewModelInject constructor( val repository: HomeRepository, @Assisted private val savedStateHandle: SavedStateHandle) : ViewModel(),LifecycleObserver {
-    val _popularMovies = MutableLiveData<Resources<List<Movie>>>()
+    private val _popularMovies = MutableLiveData<Resources<List<Movie>>>()
     val popularMovies :LiveData<Resources<List<Movie>>>
         get() = _popularMovies
 
     fun getTopRatedMovies():Flow<PagingData<Movie>>{
        return repository.getTopRatedMovies().cachedIn(viewModelScope)
     }
-    fun getPlayNowMovies():Flow<PagingData<Movie>>{
+    fun getPlayNowMovies():Flow<PagingData<PlayingMovies>>{
         return repository.getPlayNowMovies().cachedIn(viewModelScope)
     }
     fun getUpComingMovies():Flow<PagingData<UpComingMovies>>{

@@ -26,4 +26,10 @@ object DataBaseModule{
     @Singleton
     @Provides
     fun provideUpComingMoviesDao(dataBase: AppDatabase)=dataBase.upComingMoviesDao()
+    @Singleton
+    @Provides
+    fun providePlayingNowMoviesDao(dataBase: AppDatabase)=dataBase.playingNowMoviesDao()
+    @Singleton
+    @Provides
+    fun provideMovieDetailsDao(dataBase: AppDatabase)=dataBase.movieDetailsDao()
 }

@@ -9,4 +9,5 @@ object Constant {
     const val TOP_Rated_CATEGORY = "TopRated"
     const val UP_COMING_CATEGORY = "UpComing"
     const val PLAYING_NOW_CATEGORY = "PlayingNow"
+    const val MOVIE_ID = "movieID"
 }

@@ -8,7 +8,7 @@ import com.squareup.moshi.Json
 @Entity
 data class UpComingMovies(
 
-    var idInDatabase:Int,
+
     var backdropPath: String?,
     var id: Int?,
     var originalTitle: String?,

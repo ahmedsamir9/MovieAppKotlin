@@ -7,16 +7,21 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.databinding.MovieItemBinding
 import com.example.movieapp.model.Movie
+import com.example.movieapp.utils.OnClickOnItem
 
-class MainAdapter:PagingDataAdapter<Movie, MainAdapter.MainViewHolder>(
+class MainAdapter(val click :OnClickOnItem):PagingDataAdapter<Movie, MainAdapter.MainViewHolder>(
     upComingDiffUtils
 ) {
 
 
 
-class MainViewHolder(val binding :MovieItemBinding) :RecyclerView.ViewHolder(binding.root){
+class MainViewHolder(val binding :MovieItemBinding, private val click: OnClickOnItem) :RecyclerView.ViewHolder(binding.root){
     fun onBind(item:Movie){
         binding.movie =item
+        binding.linearLayout.setOnClickListener{
+
+            click.onClickItem(item.id!!)
+        }
     }
 
 }
@@ -31,7 +36,7 @@ class MainViewHolder(val binding :MovieItemBinding) :RecyclerView.ViewHolder(bin
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = MovieItemBinding.inflate(inflater,parent,false)
-        return MainViewHolder(binding)
+        return MainViewHolder(binding,click)
     }
     companion object{
         val upComingDiffUtils = object :DiffUtil.ItemCallback<Movie>(){

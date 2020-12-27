@@ -96,5 +96,9 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="Playing_now">PlayingNow Movies</string>
+    <string name="rate">Rate : </string>
+    <string name="overView">OverView : </string>
+    <string name="cast">Cast :</string>
+    <string name="similarMovies">Similar Movies :</string>
 
 </resources>

@@ -7,11 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,9 +23,12 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.movieapp.R
 import com.example.movieapp.databinding.MainFragmentBinding
 import com.example.movieapp.ui.HomeScreen.Adapters.MainAdapter
+import com.example.movieapp.ui.HomeScreen.Adapters.PlayingNowAdapter
 import com.example.movieapp.ui.HomeScreen.Adapters.PopularMovieAdapter
 import com.example.movieapp.ui.HomeScreen.Adapters.UpComingAdapter
 import com.example.movieapp.ui.LoadingAdapter
+import com.example.movieapp.utils.Constant.MOVIE_ID
+import com.example.movieapp.utils.OnClickOnItem
 import com.example.movieapp.utils.Status
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -30,6 +37,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
+import java.util.*
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -38,25 +46,35 @@ class MainFragment : Fragment() {
     private lateinit var mainFragmentBinder: MainFragmentBinding
     private lateinit var upComingAdapter: UpComingAdapter
     private lateinit var topRatedAdapter: MainAdapter
-    private lateinit var playingNowAdapter:MainAdapter
+    private lateinit var playingNowAdapter:PlayingNowAdapter
     private lateinit var popularMovieAdapter: PopularMovieAdapter
+
     @InternalCoroutinesApi
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         mainFragmentBinder = DataBindingUtil.inflate(inflater,R.layout.main_fragment, container, false)
-        upComingAdapter = UpComingAdapter()
-        topRatedAdapter = MainAdapter()
-        playingNowAdapter = MainAdapter()
-        popularMovieAdapter = PopularMovieAdapter(null)
+        val view  = mainFragmentBinder.root
+
+        topRatedAdapter = MainAdapter(clickOnItem)
+        upComingAdapter = UpComingAdapter(clickOnItem)
+
+        playingNowAdapter = PlayingNowAdapter(clickOnItem)
+        popularMovieAdapter = PopularMovieAdapter(null,clickOnItem)
         lifecycle.addObserver(mainViewModel)
         handleViewStates()
         setUpView()
 
-        return mainFragmentBinder.root
+        return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+       // navController =Navigation.findNavController(view)
+
+
+    }
     override fun onStart() {
         super.onStart()
         getUpComingMovies()
@@ -88,6 +106,7 @@ class MainFragment : Fragment() {
             }
             Status.LOADING->{
                 mainFragmentBinder.popularProgress.visibility= View.VISIBLE
+                mainFragmentBinder.popularRteyBtn.visibility= View.GONE
             }
         }
     })}
@@ -163,6 +182,7 @@ class MainFragment : Fragment() {
             if (loadState.refresh is LoadState.Loading ||
                 loadState.append is LoadState.Loading)
             // Show ProgressBar
+                if( playingNowAdapter.itemCount <= 0)
                 mainFragmentBinder.playnowProgress.visibility = View.VISIBLE
             else {
                 // Hide ProgressBar
@@ -174,7 +194,7 @@ class MainFragment : Fragment() {
                     loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
                     else -> null
                 }
-                if(errorState == null){
+                if(errorState == null || playingNowAdapter.itemCount > 0){
                     mainFragmentBinder.playnowProgress.visibility = View.GONE
                     mainFragmentBinder.playnowRteyBtn.visibility = View.GONE
                 }
@@ -193,6 +213,7 @@ class MainFragment : Fragment() {
             if (loadState.refresh is LoadState.Loading ||
                 loadState.append is LoadState.Loading)
             // Show ProgressBar
+                if( topRatedAdapter.itemCount <= 0)
                 mainFragmentBinder.topRatedProgress.visibility = View.VISIBLE
             else {
                 // Hide ProgressBar
@@ -204,7 +225,7 @@ class MainFragment : Fragment() {
                     loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
                     else -> null
                 }
-                if(errorState == null){
+                if(errorState == null || topRatedAdapter.itemCount > 0){
                     mainFragmentBinder.topRatedProgress.visibility = View.GONE
                     mainFragmentBinder.topRatedRteyBtn.visibility = View.GONE
                 }
@@ -223,6 +244,7 @@ class MainFragment : Fragment() {
             if (loadState.refresh is LoadState.Loading ||
                 loadState.append is LoadState.Loading)
             // Show ProgressBar
+                if( upComingAdapter.itemCount <= 0)
                 mainFragmentBinder.upcomingProgress.visibility = View.VISIBLE
             else {
                 // Hide ProgressBar
@@ -234,7 +256,7 @@ class MainFragment : Fragment() {
                     loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
                     else -> null
                 }
-                if(errorState == null){
+                if(errorState == null || upComingAdapter.itemCount > 0){
                     mainFragmentBinder.upcomingProgress.visibility = View.GONE
                     mainFragmentBinder.upcomingRteyBtn.visibility = View.GONE
                 }
@@ -257,6 +279,14 @@ private fun retryToConnect(){
     mainViewModel.getPopularMovies()
     upComingAdapter.retry()
 }
+    val clickOnItem = object :OnClickOnItem{
+        override fun onClickItem(id: Int) {
+            val action = MainFragmentDirections.actionMainFragmentToDetailsFragment(id)
+            findNavController().navigate(action)
+        }
+
+    }
+
 
 }
 

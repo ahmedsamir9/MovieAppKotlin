@@ -80,7 +80,7 @@ class UpcomingRemoteMediotrs(
         val list = ArrayList<UpComingMovies>()
         response.results?.forEach {
             list.add(
-                UpComingMovies(0,it.backdropPath,it.id,
+                UpComingMovies(it.backdropPath,it.id,
                 it.originalTitle,it.posterPath,it.title!!,category, it.voteAverage
                 )
             )

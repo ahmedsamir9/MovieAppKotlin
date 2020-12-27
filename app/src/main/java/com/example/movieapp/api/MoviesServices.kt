@@ -1,10 +1,14 @@
 package com.example.movieapp.api
 
+import com.example.movieapp.model.MovieDetails.Credits.MovieCredits
+import com.example.movieapp.model.MovieDetails.MovieDetails
+import com.example.movieapp.model.MovieDetails.Trailer.TrailerResponse
 import com.example.movieapp.model.MovieResponse
 import com.example.movieapp.utils.Constant
 import com.example.movieapp.utils.Constant.API_KEY
 import com.example.movieapp.utils.Constant.LANGUAGE
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface MoviesServices {
@@ -20,4 +24,14 @@ interface MoviesServices {
     @GET("movie/upcoming")
     suspend fun getUpComingMovies(@Query("api_key")apiKey :String = API_KEY, @Query("language")language:String = LANGUAGE
                                   , @Query("page") page:Int):MovieResponse
+    @GET("movie/{movie_id}")
+    suspend fun getMovieDetails(@Path("movie_id") id :Int,@Query("api_key")apiKey :String = API_KEY
+                                , @Query("language")language:String = LANGUAGE):MovieDetails
+
+    @GET("movie/{movie_id}/credits")
+    suspend fun getMovieDetailsCredits(@Path("movie_id") id :Int,@Query("api_key")apiKey :String = API_KEY
+                                       , @Query("language")language:String = LANGUAGE):MovieCredits
+    @GET("movie/{movie_id}/videos")
+    suspend fun getMovieDetailsVideos(@Path("movie_id") id :Int,@Query("api_key")apiKey :String = API_KEY
+                                       , @Query("language")language:String = LANGUAGE):TrailerResponse
 }

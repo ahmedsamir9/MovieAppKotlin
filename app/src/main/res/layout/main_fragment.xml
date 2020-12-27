@@ -176,6 +176,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/PlayingNow_rv"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_300sdp"
                     android:layout_marginStart="@dimen/_8sdp"
