@@ -20,7 +20,6 @@ class MovieDetailViewModel@ViewModelInject constructor( private val repository:M
 
 
     public fun getMovieData(id :Int){
-        Log.d("soso ","inviewModel")
         viewModelScope.launch {
             repository.getMovieDetails(id).flowOn(Dispatchers.Default).collect {
                 when(it.status){

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.example.movieapp.R
 import com.example.movieapp.ui.HomeScreen.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint

@@ -19,6 +19,19 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/nameTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textSize="35sp"
+            android:textStyle="bold"
+
+            app:layout_anchorGravity="bottom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@{movieDetails.title}" />
+
+        <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,29 +40,28 @@
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/_15sdp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/nameTwo" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_8sdp"
-            tools:text="4.5"
-            android:layout_marginTop="@dimen/_4sdp"
-           android:text="@{Double.toString(movieDetails.rate)}"
+            android:text="@{Double.toString(movieDetails.rate)}"
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/_15sdp"
             app:layout_constraintStart_toEndOf="@+id/textView5"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/nameTwo"
+            tools:text="4.5" />
 
         <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:src="@drawable/star"
             android:layout_marginStart="@dimen/_8sdp"
+            android:src="@drawable/star"
             app:layout_constraintStart_toEndOf="@+id/textView6"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/nameTwo" />
 
         <TextView
             android:id="@+id/textView7"

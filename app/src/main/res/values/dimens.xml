@@ -5,10 +5,9 @@
     <dimen name="pageMargin">30dp</dimen>
     <dimen name="offset">30dp</dimen>
     <dimen name="pageMarginAndOffset">50dp</dimen>
+    <dimen name="match_parent">0dp</dimen>
     <dimen name="details_toolbar_height">250dp</dimen>
     <dimen name="item_height">200dp</dimen>
-
-
     <dimen name="dimen0dp">0dp</dimen>
     <dimen name="dimen2dp">2dp</dimen>
     <dimen name="dimen4dp">4dp</dimen>
