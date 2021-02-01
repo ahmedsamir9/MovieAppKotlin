@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="item"
+            type="com.example.movieapp.model.searchmodel.SearchItem" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/_8sdp"
+    android:layout_height="wrap_content">
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/materialCardView2"
+        android:layout_width="@dimen/dimen0dp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:src="@color/colorPrimaryDark"
+        app:shapeAppearance="@style/listItem.Corner"
+        app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/shapeableImageView2"/>
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/shapeableImageView2"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_margin="@dimen/_8sdp"
+        setImageByGlide="@{item.posterPath}"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearance="@style/listItem.Corner"
+        tools:srcCompat="@drawable/movie" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@{item.title}"
+        android:layout_marginEnd="@dimen/_4sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/materialCardView2"
+        app:layout_constraintEnd_toEndOf="@+id/materialCardView2"
+        android:layout_marginStart="@dimen/_4sdp"
+        app:layout_constraintStart_toEndOf="@+id/shapeableImageView2"
+        app:layout_constraintTop_toTopOf="@+id/materialCardView2"
+        tools:text="ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

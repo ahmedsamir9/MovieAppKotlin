@@ -92,6 +92,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -100,9 +101,12 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar_card">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-             >
+                android:visibility="gone"
+                >
+
                 <View
                     android:id="@+id/line1"
                     android:layout_width="@dimen/dimen2dp"
@@ -133,7 +137,6 @@
                     android:numStars="10"
                     app:layout_constraintBottom_toTopOf="@+id/materialTextView2"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
 
@@ -181,8 +184,7 @@
                     android:background="@color/colorAccent"
                     app:layout_constraintBottom_toBottomOf="@+id/materialTextView3"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/overview_text"
-                    app:layout_constraintVertical_bias="0.526" />
+                    app:layout_constraintTop_toBottomOf="@+id/overview_text" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/materialTextView3"
@@ -200,16 +202,92 @@
                     android:id="@+id/actor_rv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintBottom_toTopOf="@+id/materialTextView10"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/materialTextView3"
                     tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:listitem="@layout/movie_actor_item"
                     tools:orientation="horizontal" />
+
+                <View
+                    android:id="@+id/line8"
+                    android:layout_width="@dimen/dimen2dp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@color/colorAccent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/actor_rv" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/materialTextView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Similar Movies"
+                    android:textSize="@dimen/_20sdp"
+                    app:layout_constraintStart_toEndOf="@+id/line1"
+                    app:layout_constraintTop_toBottomOf="@+id/actor_rv" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/similar_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_170sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/materialTextView10"
+                    tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/movie_item"
+                    tools:orientation="horizontal" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </ScrollView>
+
+        <Button
+            android:id="@+id/retry_movie_load"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="@string/text_retry"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_card" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/details_message"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/retry_movie_load"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_card"
+            tools:text="Message"
+            android:textSize="@dimen/_16sdp"/>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/details_shimmer"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_card">
+
+            <include layout="@layout/shimmer_details_layout" />
+
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

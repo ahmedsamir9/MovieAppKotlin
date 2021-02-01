@@ -7,4 +7,5 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="colorAccent">#CA3133</color>
     <color name="mainBackground">#24292F</color>
+    <color name="gray">#dddddd</color>
 </resources>

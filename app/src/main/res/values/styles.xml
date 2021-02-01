@@ -16,7 +16,13 @@
         <item name="cornerSizeBottomLeft">@dimen/dimen50dp</item>
         <item name="cornerSizeBottomRight">@dimen/dimen8dp</item>
     </style>
-
+    <style name="listItem.Corner" parent="Widget.MaterialComponents.CardView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/_dimen20dp</item>
+        <item name="cornerSizeTopRight">@dimen/_dimen20dp</item>
+        <item name="cornerSizeBottomLeft">@dimen/_dimen20dp</item>
+        <item name="cornerSizeBottomRight">@dimen/_dimen20dp</item>
+    </style>
     <!--    Using Drawable as background instead-->
     <!--    <style name="Widget.Task1.bookmark.Corner" parent="Widget.MaterialComponents.CardView">-->
     <!--        <item name="cornerFamily">rounded</item>-->
@@ -67,4 +73,5 @@
         <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
 
+    <dimen name="dimen20dp">20</dimen>
 </resources>

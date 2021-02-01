@@ -34,4 +34,10 @@ interface MoviesServices {
     @GET("movie/{movie_id}/videos")
     suspend fun getMovieDetailsVideos(@Path("movie_id") id :Int,@Query("api_key")apiKey :String = API_KEY
                                        , @Query("language")language:String = LANGUAGE):TrailerResponse
+    @GET("movie/{movie_id}/recommendations")
+    suspend fun getSimilarMovies(@Path("movie_id") id :Int,@Query("api_key")apiKey :String = API_KEY
+                                      , @Query("language")language:String = LANGUAGE,@Query("page") page:Int = 1):MovieResponse
+    @GET("search/multi")
+    suspend fun searchForWord(@Query("query") word :String, @Query("api_key")apiKey :String = API_KEY
+                              , @Query("language")language:String = LANGUAGE, @Query("page") page:Int = 1):MovieResponse
 }

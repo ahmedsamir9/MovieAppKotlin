@@ -99,4 +99,6 @@ dependencies {
     //palette
     //noinspection GradleCompatible
     implementation "com.android.support:palette-v7:28.0.0"
+    //shimmer effect
+    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
 }

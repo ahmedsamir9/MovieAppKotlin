@@ -7,15 +7,18 @@ import com.example.movieapp.DB.Converters.CastConverter
 import com.example.movieapp.DB.dao.*
 import com.example.movieapp.model.*
 import com.example.movieapp.model.MovieDetailData
+import com.example.movieapp.model.searchmodel.SearchItem
 
 
 @Database(entities = [Movie::class, MoviesRemoteKeys::class,
     UpComingMovies::class,PlayingMovies::class
-    , MovieDetailData::class],version = 1,exportSchema = false)
+    , MovieDetailData::class,SimilarMovie::class,SearchItem::class],version = 1,exportSchema = false)
 @TypeConverters(CastConverter::class)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun movieDao(): MoviesDao
+    abstract fun searchDao(): SearchDao
     abstract fun movieRemoteKeys():MoviesRemoteKeysDao
+    abstract fun similarMovieDao():SimilarMovieDao
     abstract fun upComingMoviesDao(): UpComingMoviesDoa
     abstract fun playingNowMoviesDao(): PlayingNowMoviesDoa
     abstract fun movieDetailsDao(): MovieDetailsDao

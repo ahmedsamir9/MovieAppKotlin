@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Search.SearchFragment">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_for_movie"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:iconifiedByDefault="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="Search for Movies or Actors" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_rv"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_width="@dimen/dimen0dp"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:layout_height="@dimen/dimen0dp"
+        tools:listitem="@layout/search_item"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_for_movie" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

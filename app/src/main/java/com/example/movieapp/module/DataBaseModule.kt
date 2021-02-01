@@ -32,4 +32,10 @@ object DataBaseModule{
     @Singleton
     @Provides
     fun provideMovieDetailsDao(dataBase: AppDatabase)=dataBase.movieDetailsDao()
+    @Singleton
+    @Provides
+    fun provideSimilarMovieDao(dataBase: AppDatabase)=dataBase.similarMovieDao()
+    @Singleton
+    @Provides
+    fun provideSearchDao(dataBase: AppDatabase)=dataBase.searchDao()
 }

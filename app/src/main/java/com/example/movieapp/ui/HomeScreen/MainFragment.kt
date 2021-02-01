@@ -23,6 +23,7 @@ import com.example.movieapp.ui.HomeScreen.Adapters.MainAdapter
 import com.example.movieapp.ui.HomeScreen.Adapters.PlayingNowAdapter
 import com.example.movieapp.ui.HomeScreen.Adapters.PopularMovieAdapter
 import com.example.movieapp.ui.HomeScreen.Adapters.UpComingAdapter
+import com.example.movieapp.ui.HorItemDecorator
 import com.example.movieapp.ui.LoadingAdapter
 import com.example.movieapp.utils.OnClickOnItem
 import com.example.movieapp.utils.Status
@@ -83,7 +84,7 @@ class MainFragment : Fragment() {
 
         lifecycleScope.launch {
             mainViewModel.getTopRatedMovies().flowOn(Dispatchers.Default).collect{
-                if (it==null) {Log.d("lolo", it.toString())}
+
                 topRatedAdapter.submitData(it)
             }
         }
@@ -111,7 +112,7 @@ class MainFragment : Fragment() {
     private fun getUpComingMovies(){
         lifecycleScope.launch {
             mainViewModel.getUpComingMovies().flowOn(Dispatchers.Default).collectLatest{
-                if (it==null) {Log.d("lolo", it.toString())}
+
               upComingAdapter.submitData(it)
             }
         }
@@ -120,8 +121,6 @@ class MainFragment : Fragment() {
     private fun getPlayingNowMovies(){
         lifecycleScope.launch {
             mainViewModel.getPlayNowMovies().flowOn(Dispatchers.Default).collectLatest{
-
-                if (it==null) {Log.d("lolo", it.toString())}
                 playingNowAdapter.submitData(it)
             }
         }
@@ -157,7 +156,8 @@ class MainFragment : Fragment() {
                 resources.getDimensionPixelOffset(R.dimen.pageMargin).toFloat()
             val pageOffset =
                 resources.getDimensionPixelOffset(R.dimen.offset).toFloat()
-            offscreenPageLimit = 3
+            offscreenPageLimit = 1
+
             clipChildren = false
             clipToPadding =false
             setPageTransformer { page, position ->
