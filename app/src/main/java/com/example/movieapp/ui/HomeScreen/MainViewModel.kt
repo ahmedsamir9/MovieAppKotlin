@@ -11,10 +11,7 @@ import com.example.movieapp.model.PlayingMovies
 
 import com.example.movieapp.model.UpComingMovies
 import com.example.movieapp.repository.HomeRepository.HomeRepository
-import com.example.movieapp.ui.HomeScreen.states.HomeStateEvent
-import com.example.movieapp.ui.HomeScreen.states.HomeStateEvent.*
-import com.example.movieapp.ui.HomeScreen.states.HomeViewState
-import com.example.movieapp.ui.HomeScreen.states.HomeViewState.*
+
 import com.example.movieapp.utils.Resources
 import kotlinx.coroutines.channels.Channel
 

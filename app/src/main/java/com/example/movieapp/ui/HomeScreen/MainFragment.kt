@@ -62,16 +62,13 @@ class MainFragment : Fragment() {
         setupViewComponent()
         handleViewStates()
         setUpView()
-
+        mainFragmentBinder.searchBtn.setOnClickListener {
+            val action =MainFragmentDirections.actionMainFragmentToSearchFragment()
+            findNavController().navigate(action)
+        }
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-       // navController =Navigation.findNavController(view)
-
-
-    }
     override fun onStart() {
         super.onStart()
         getUpComingMovies()

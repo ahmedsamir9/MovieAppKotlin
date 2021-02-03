@@ -10,4 +10,6 @@ object Constant {
     const val UP_COMING_CATEGORY = "UpComing"
     const val PLAYING_NOW_CATEGORY = "PlayingNow"
     const val MOVIE_ID = "movieID"
+    const val MEDIA_TYPE_MOVIE ="movie"
+    const val MEDIA_TYPE_PERSON = "person"
 }

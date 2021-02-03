@@ -4,6 +4,7 @@ import com.example.movieapp.model.MovieDetails.Credits.MovieCredits
 import com.example.movieapp.model.MovieDetails.MovieDetails
 import com.example.movieapp.model.MovieDetails.Trailer.TrailerResponse
 import com.example.movieapp.model.MovieResponse
+import com.example.movieapp.model.searchmodel.people.PeopleSearchResponse
 import com.example.movieapp.utils.Constant
 import com.example.movieapp.utils.Constant.API_KEY
 import com.example.movieapp.utils.Constant.LANGUAGE
@@ -37,7 +38,11 @@ interface MoviesServices {
     @GET("movie/{movie_id}/recommendations")
     suspend fun getSimilarMovies(@Path("movie_id") id :Int,@Query("api_key")apiKey :String = API_KEY
                                       , @Query("language")language:String = LANGUAGE,@Query("page") page:Int = 1):MovieResponse
-    @GET("search/multi")
-    suspend fun searchForWord(@Query("query") word :String, @Query("api_key")apiKey :String = API_KEY
+    @GET("search/person")
+    suspend fun searchForPeople(@Query("query") word :String, @Query("api_key")apiKey :String = API_KEY
+                              , @Query("language")language:String = LANGUAGE, @Query("page") page:Int = 1):PeopleSearchResponse
+    @GET("search/movie")
+    suspend fun searchForMovies(@Query("query") word :String, @Query("api_key")apiKey :String = API_KEY
                               , @Query("language")language:String = LANGUAGE, @Query("page") page:Int = 1):MovieResponse
+
 }

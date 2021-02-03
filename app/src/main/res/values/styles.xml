@@ -6,6 +6,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:windowBackground">@color/mainBackground</item>
+        <item name="android:editTextColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/white</item>
         <item name="android:windowActivityTransitions">true</item>
     </style>
 
@@ -21,7 +23,7 @@
         <item name="cornerSizeTopLeft">@dimen/_dimen20dp</item>
         <item name="cornerSizeTopRight">@dimen/_dimen20dp</item>
         <item name="cornerSizeBottomLeft">@dimen/_dimen20dp</item>
-        <item name="cornerSizeBottomRight">@dimen/_dimen20dp</item>
+
     </style>
     <!--    Using Drawable as background instead-->
     <!--    <style name="Widget.Task1.bookmark.Corner" parent="Widget.MaterialComponents.CardView">-->
@@ -73,5 +75,13 @@
         <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
 
-    <dimen name="dimen20dp">20</dimen>
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+
+        <item name="searchIcon">@drawable/ic_search</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:editTextColor">@color/white</item>
+
+    </style>
+
+    <string name="search_hint">lol</string>
 </resources>

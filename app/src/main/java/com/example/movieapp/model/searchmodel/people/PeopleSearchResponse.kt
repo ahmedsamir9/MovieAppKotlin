@@ -1,13 +1,13 @@
-package com.example.movieapp.model.searchmodel
+package com.example.movieapp.model.searchmodel.people
 
 
 import com.google.gson.annotations.SerializedName
 
-data class SearchResponse(
+data class PeopleSearchResponse(
     @SerializedName("page")
     var page: Int?,
     @SerializedName("results")
-    var results: List<Result>?,
+    var results: List<People>?,
     @SerializedName("total_pages")
     var totalPages: Int?,
     @SerializedName("total_results")

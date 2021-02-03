@@ -23,7 +23,7 @@ import com.example.movieapp.ui.Details.adapters.SimilarMoviesAdapter
 import com.example.movieapp.ui.HorItemDecorator
 import com.example.movieapp.ui.LoadingAdapter
 import com.example.movieapp.utils.Status
-import com.example.movieapp.utils.isVisible
+import com.example.movieapp.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
@@ -103,9 +103,9 @@ class DetailsFragment : Fragment() {
     }
 
     private fun toggleScreenState(isVisible: Boolean) {
-        detailsFragmentBinder.content.isVisible(isVisible)
-        detailsFragmentBinder.detailsMessage.isVisible(!isVisible)
-        detailsFragmentBinder.retryMovieLoad.isVisible(!isVisible)
+        detailsFragmentBinder.content.visible(isVisible)
+        detailsFragmentBinder.detailsMessage.visible(!isVisible)
+        detailsFragmentBinder.retryMovieLoad.visible(!isVisible)
     }
 
     private fun handleClicks() {
@@ -124,7 +124,7 @@ class DetailsFragment : Fragment() {
 
     private fun hideShimmerEffect() {
         detailsFragmentBinder.detailsShimmer.stopShimmerAnimation()
-        detailsFragmentBinder.detailsShimmer.isVisible(false)
+        detailsFragmentBinder.detailsShimmer.visible(false)
     }
 
     private fun getSimilarMovies(movieName: String, movieId: Int) {
