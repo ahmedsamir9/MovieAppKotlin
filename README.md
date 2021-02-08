@@ -1,7 +1,7 @@
 # movies Land Android
 
 * sample movie app (single activity app) that show movies and actors using tmdb api
-
+## 🎥 Watch demo on [youtube](https://youtu.be/jPT40HjXRlI)
 ## 🧐 About
 * main purpose for building this project is to achieve Single source of truth(SSOT) principle(which is local Db) and handle all states for every screen
 
