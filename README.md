@@ -1,6 +1,6 @@
 # Movies Land App
-* sample movie app that show movies and actors
-* main purpose for building this project is to achieve Single source of truth(SSOT) principle  and handle all states for every screen
+* sample movie app (single activity app) that show movies and actors
+* main purpose for building this project is to achieve Single source of truth(SSOT) principle  and handle all states for every screen 
 ## Used Tools 🛠 : 
 * hilt for di 
 * kotlin Coroutine and flows for (threading and backgroud)
