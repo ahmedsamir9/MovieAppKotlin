@@ -17,6 +17,7 @@ import com.example.movieapp.R
 import com.example.movieapp.databinding.SearchFragmentBinding
 import com.example.movieapp.model.searchmodel.SearchItem
 import com.example.movieapp.ui.LoadingAdapter
+
 import com.example.movieapp.utils.Constant
 import com.example.movieapp.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,9 +42,11 @@ class SearchFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         searchFragmentBinding.shimmerSearch.startShimmerAnimation()
+        getItemFromSearch(searchFragmentBinding.searchForMovie.query.toString())
         getRegisterSearchQuery()
     }
    private fun getRegisterSearchQuery(){
+
            searchFragmentBinding.searchForMovie.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                override fun onQueryTextSubmit(query: String?): Boolean {
                    getItemFromSearch(query)
@@ -141,10 +144,11 @@ class SearchFragment : Fragment() {
         return object :SearchAdapter.OnSelectItem{
             override fun onClickItem(item: SearchItem) {
                 if (item.mediaType == Constant.MEDIA_TYPE_MOVIE){
-                    val action =SearchFragmentDirections.actionSearchFragmentToDetailsFragment(item.id)
+                    val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(item.id)
                     findNavController().navigate(action)
                 }else{
-
+                    val action = SearchFragmentDirections.actionSearchFragmentToActorFragment(item.id)
+                    findNavController().navigate(action)
                 }
             }
 

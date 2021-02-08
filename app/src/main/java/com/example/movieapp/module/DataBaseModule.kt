@@ -38,4 +38,7 @@ object DataBaseModule{
     @Singleton
     @Provides
     fun provideSearchDao(dataBase: AppDatabase)=dataBase.searchDao()
+    @Singleton
+    @Provides
+    fun provideActorDao(dataBase: AppDatabase)=dataBase.actorDataDao()
 }

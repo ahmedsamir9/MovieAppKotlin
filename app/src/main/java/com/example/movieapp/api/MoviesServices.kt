@@ -1,5 +1,7 @@
 package com.example.movieapp.api
 
+import com.example.movieapp.model.ActorResponse
+import com.example.movieapp.model.MovieActorResponse
 import com.example.movieapp.model.MovieDetails.Credits.MovieCredits
 import com.example.movieapp.model.MovieDetails.MovieDetails
 import com.example.movieapp.model.MovieDetails.Trailer.TrailerResponse
@@ -34,15 +36,20 @@ interface MoviesServices {
                                        , @Query("language")language:String = LANGUAGE):MovieCredits
     @GET("movie/{movie_id}/videos")
     suspend fun getMovieDetailsVideos(@Path("movie_id") id :Int,@Query("api_key")apiKey :String = API_KEY
-                                       , @Query("language")language:String = LANGUAGE):TrailerResponse
+                                      , @Query("language")language:String = LANGUAGE):TrailerResponse
     @GET("movie/{movie_id}/recommendations")
     suspend fun getSimilarMovies(@Path("movie_id") id :Int,@Query("api_key")apiKey :String = API_KEY
-                                      , @Query("language")language:String = LANGUAGE,@Query("page") page:Int = 1):MovieResponse
+                                 , @Query("language")language:String = LANGUAGE,@Query("page") page:Int = 1):MovieResponse
     @GET("search/person")
     suspend fun searchForPeople(@Query("query") word :String, @Query("api_key")apiKey :String = API_KEY
-                              , @Query("language")language:String = LANGUAGE, @Query("page") page:Int = 1):PeopleSearchResponse
+                                , @Query("language")language:String = LANGUAGE, @Query("page") page:Int = 1):PeopleSearchResponse
     @GET("search/movie")
     suspend fun searchForMovies(@Query("query") word :String, @Query("api_key")apiKey :String = API_KEY
-                              , @Query("language")language:String = LANGUAGE, @Query("page") page:Int = 1):MovieResponse
-
+                                , @Query("language")language:String = LANGUAGE, @Query("page") page:Int = 1):MovieResponse
+    @GET("person/{person_id}")
+    suspend fun getActor(@Path("person_id") id:Int, @Query("api_key")apiKey :String = API_KEY
+                         , @Query("language")language:String = LANGUAGE):ActorResponse
+    @GET("person/{person_id}/movie_credits")
+    suspend fun getActorMovies(@Path("person_id") id:Int, @Query("api_key")apiKey :String = API_KEY
+                               , @Query("language")language:String = LANGUAGE):MovieActorResponse
 }

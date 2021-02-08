@@ -25,11 +25,13 @@ class CastAdapter(private val interaction: Interaction? = null) :
     }
 
     inner class CastViewHolder(
-     private val binding: MovieActorItemBinding,
+        private val binding: MovieActorItemBinding,
         private val interaction: Interaction?
     ) : RecyclerView.ViewHolder(binding.root){
         fun bind(item: Cast) {
-        binding.actorData =item
+            binding.actorData =item
+            binding.root.setOnClickListener {interaction?.onItemSelected(adapterPosition,item)
+            }
         }
     }
 

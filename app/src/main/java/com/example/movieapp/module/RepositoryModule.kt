@@ -2,6 +2,7 @@ package com.example.movieapp.module
 
 import com.example.movieapp.DB.AppDatabase
 import com.example.movieapp.api.MoviesServices
+import com.example.movieapp.repository.ActorRepository
 import com.example.movieapp.repository.HomeRepository.HomeRepository
 import com.example.movieapp.repository.MovieDetailsRepositry.MovieDetailsRepo
 import com.example.movieapp.repository.Searchrepository.SearchRepository
@@ -23,4 +24,8 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun provideSearchRepository( local:AppDatabase , remote :MoviesServices):SearchRepository =SearchRepository(local,remote)
+    @Singleton
+    @Provides
+    fun provideActorRepository( local:AppDatabase , remote :MoviesServices): ActorRepository =
+        ActorRepository(local,remote)
 }

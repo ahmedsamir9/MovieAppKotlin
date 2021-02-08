@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
 import com.example.movieapp.databinding.DetailsFragmentBinding
+import com.example.movieapp.model.Cast
 import com.example.movieapp.model.SimilarMovie
 import com.example.movieapp.ui.Details.adapters.CastAdapter
 import com.example.movieapp.ui.Details.adapters.SimilarMoviesAdapter
@@ -75,6 +76,7 @@ class DetailsFragment : Fragment() {
                     toggleScreenState(true)
                     detailsFragmentBinder.movieData = it.data
                     castAdapter.submitList(it.data?.cast)
+
                     val rate = it.data?.rate?.toFloat()
                     detailsFragmentBinder.ratingBar.rating = rate!!
                     getSimilarMovies(it.data!!.title, it.data.id)
@@ -93,11 +95,27 @@ class DetailsFragment : Fragment() {
     }
 
     private fun setUpView() {
-        castAdapter = CastAdapter(null)
+        castAdapter = CastAdapter(navigateToActorScreen())
         detailsFragmentBinder.actorRv.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             adapter = castAdapter
             addItemDecoration(HorItemDecorator(16))
+        }
+
+    }
+    private fun navigateToActorScreen(): CastAdapter.Interaction {
+        return object :CastAdapter.Interaction{
+            override fun onItemSelected(position: Int, item: Cast) {
+                val action = item.id?.let {
+                    DetailsFragmentDirections.actionDetailsFragmentToActorFragment(
+                        it
+                    )
+                }
+                if (action != null) {
+                    findNavController().navigate(action)
+                }
+            }
+
         }
 
     }

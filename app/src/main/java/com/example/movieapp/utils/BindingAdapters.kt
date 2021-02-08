@@ -13,6 +13,6 @@ fun setImageByGlide(imageView: ImageView,path:String?){
         Glide.with(imageView.context)
             .load(imagePath)
             .error(R.drawable.movie)
-            .placeholder(R.drawable.ic_loader)
+            .placeholder(R.drawable.loading_animation)
             .into(imageView);
 }
