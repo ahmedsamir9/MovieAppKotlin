@@ -32,21 +32,15 @@
  * THE SOFTWARE.
  */
 
-package com.example.movieapp.ui.HomeScreen
+package com.example.movieapp.ui
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.databinding.ItemLoadingStateBinding
-
-import kotlinx.android.synthetic.main.item_loading_state.view.*
 
 class LoadingAdapter(private val retry: () -> Unit) :
     LoadStateAdapter<LoadingAdapter.LoadingStateViewHolder>() {

@@ -13,4 +13,8 @@ interface MoviesRemoteKeysDao {
     suspend fun insertKeys(key:MoviesRemoteKeys)
     @Query("select * from MoviesRemoteKeys where category like '%' || :cate || '%' order by pk Desc " )
      fun getMoviesKeys(cate: String ):List<MoviesRemoteKeys>
+    @Query("delete from moviesremotekeys")
+    fun deleteAllData()
+
+
 }

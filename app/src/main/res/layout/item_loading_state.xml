@@ -12,7 +12,7 @@
 
     <TextView
         android:id="@+id/tvErrorMessage"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/white"
         android:textSize="14sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         android:layout_gravity="center"
         android:text="@string/text_retry"
         android:layout_marginTop="6dp"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/white"
         android:background="@drawable/btn_shape"
         app:layout_constraintTop_toBottomOf="@id/tvErrorMessage"
         app:layout_constraintStart_toStartOf="parent"

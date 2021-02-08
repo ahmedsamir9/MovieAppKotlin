@@ -14,23 +14,19 @@ import java.io.IOException
 private val TAG: String = "AppDebug"
 
 suspend fun <T> safeApiCall(
-    dispatcher: CoroutineDispatcher,
     apiCall: suspend () -> T
 ): ApiResult<T> {
-    return withContext(dispatcher) {
-        try {
-            // throws TimeoutCancellationException
-            withTimeout(6000L){
+    return try {
                 ApiResult.Success(apiCall.invoke())
-            }
+
         } catch (throwable: Throwable) {
             when (throwable) {
-                is TimeoutCancellationException -> {
-                    val code = 408 // timeout error code
-                    ApiResult.GenericError(code, "Network timeout")
-                }
+
                 is IOException -> {
-                    ApiResult.NetworkError
+                    ApiResult.GenericError(
+                        null,
+                        "NETWORK ERROR"
+                    )
                 }
                 is HttpException -> {
                     val code = throwable.code()
@@ -49,7 +45,7 @@ suspend fun <T> safeApiCall(
             }
         }
     }
-}
+
 
 private fun convertErrorBody(throwable: HttpException): String? {
     return try {

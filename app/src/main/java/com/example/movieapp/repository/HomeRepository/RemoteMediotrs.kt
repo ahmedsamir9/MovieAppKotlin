@@ -40,7 +40,11 @@ class MoviesRemoteMediator(
             }
 
             // 2
-            val key = loadKeys?.afterIndex?:1
+            var key = loadKeys?.afterIndex?:1
+            if (loadType == LoadType.REFRESH ){
+                val newkey = getMovieRemoteKeys(category)?.afterIndex?.minus(1)
+                key = newkey?:key
+            }
             val response = fetchCategory(key)
             val data = response!!
             val next = key+ 1
@@ -63,12 +67,8 @@ class MoviesRemoteMediator(
 
     }
     private suspend fun fetchCategory(pageNumber:Int):List<Movie>?{
-        val response = when(category){
-            TOP_Rated_CATEGORY -> moviesService.getTopRatedMovies(page =pageNumber )
-            UP_COMING_CATEGORY -> moviesService.getUpComingMovies(page = pageNumber)
-            PLAYING_NOW_CATEGORY -> moviesService.getPlayingNowMovies(page = pageNumber)
-            else -> null
-        }
+        val response = moviesService.getTopRatedMovies(page =pageNumber )
+
         println("********************************************************************")
         println(response.toString())
         val list = ArrayList<Movie>()

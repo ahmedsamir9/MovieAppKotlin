@@ -12,10 +12,15 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MoviesDao {
+    @Query("delete from movie")
+    fun deleteAllData()
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovies(movies:List<Movie>)
     @Query("select * from movie where category like '%' || :cate || '%' " )
     fun getMovies(cate: String ):PagingSource<Int,Movie>
+    @Query("select * from movie where category like '%' || :cate || '%' " )
+    fun getPlayingMovies(cate: String ):PagingSource<Int,Movie>
     @Query("select * from movie where category like '%' || :cate || '%' " )
     fun getPopularMovies(cate: String = POPULAR_CATEGORY):Flow<List<Movie>>
 }

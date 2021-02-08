@@ -34,9 +34,9 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="@{movie.title}"
-            tools:textColor="#000000"
+            tools:textColor="@color/white"
             tools:text="ssssssssssssssssssssssssssss"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/white"
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -56,11 +56,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_5sdp"
         android:layout_marginTop="@dimen/_17sdp"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/white"
         android:text="@{Double.toString(movie.voteAverage)}"
         android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
-        tools:textColor="#000000"
+        tools:textColor="@color/white"
         tools:text="10"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
