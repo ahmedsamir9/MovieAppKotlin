@@ -13,5 +13,8 @@
 * lottie (for doing animation)
 * mvvm architecture 
 * lifecycle component
+* retrofit (for network calls)
+* repository pattern
+* network Bound Resouses 
 * Glide (for handling images)
 
