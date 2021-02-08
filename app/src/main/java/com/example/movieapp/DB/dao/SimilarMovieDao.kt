@@ -13,4 +13,7 @@ interface SimilarMovieDao {
     suspend fun insertMovies(movies:List<SimilarMovie>)
     @Query("select * from  similarmovie where similarTo like '%' || :movieName || '%' " )
     fun getSimilarMovies(movieName: String ): PagingSource<Int, SimilarMovie>
+    @Query("delete from similarmovie")
+    fun deleteAllData()
+
 }

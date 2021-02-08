@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">movie app</string>
+    <string name="app_name">movies Land</string>
     <string name="popular_movies">Popular Movies</string>
     <string name="upcoming_movies">UpComing Movies</string>
     <string name="text_retry">Retry</string>

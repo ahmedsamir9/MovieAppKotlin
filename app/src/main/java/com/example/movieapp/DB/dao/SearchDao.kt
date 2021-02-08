@@ -14,4 +14,7 @@ interface SearchDao {
     fun insertSearch(list:List<SearchItem>)
     @Query("select * from searchitem where keyword like '%'|| :word|| '%'")
     fun searchForItem(word:String): PagingSource<Int, SearchItem>
+    @Query("delete from searchitem")
+    fun deleteAllData()
+
 }

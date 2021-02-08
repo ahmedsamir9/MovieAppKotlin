@@ -17,5 +17,8 @@ interface PlayingNowMoviesDoa {
     suspend fun insertMovies(movies:List<PlayingMovies>)
     @Query("select * from PlayingMovies " )
     fun getMovies(): PagingSource<Int, PlayingMovies>
+    @Query("delete from playingmovies")
+    fun deleteAllData()
+
 
 }

@@ -16,5 +16,8 @@ interface UpComingMoviesDoa {
     suspend fun insertMovies(movies:List<UpComingMovies>)
     @Query("select * from UpComingMovies " )
     fun getMovies(): PagingSource<Int, UpComingMovies>
+    @Query("delete from upcomingmovies")
+    fun deleteAllData()
+
 
 }

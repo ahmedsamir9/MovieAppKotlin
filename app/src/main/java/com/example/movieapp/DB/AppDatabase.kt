@@ -25,4 +25,7 @@ abstract class AppDatabase: RoomDatabase() {
     abstract fun playingNowMoviesDao(): PlayingNowMoviesDoa
     abstract fun movieDetailsDao(): MovieDetailsDao
     abstract fun actorDataDao(): ActorDao
+    companion object{
+        fun getInstance(context: Context)=Room.databaseBuilder(context,AppDatabase::class.java,"MovieDB").allowMainThreadQueries().build()
+    }
 }

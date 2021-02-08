@@ -82,8 +82,9 @@ class SearchFragment : Fragment() {
         query?.let {
             if (query.isNotEmpty()){
                 viewModel.getSearchResults(query).debounce(2000).distinctUntilChanged().collectLatest {
-                    searchAdapter.submitData(it)
                     hideShimmerEffect()
+                    searchAdapter.submitData(it)
+
                 }
             }
         }
@@ -126,6 +127,7 @@ class SearchFragment : Fragment() {
                         }
 
                     }
+                if (searchAdapter.itemCount > 0)hideShimmerEffect()
             }
 
     }

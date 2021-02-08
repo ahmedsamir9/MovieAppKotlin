@@ -203,6 +203,7 @@ class MainFragment : Fragment() {
                 }
 
             }
+            if (playingNowAdapter.itemCount >0) mainFragmentBinder.playnowProgress.visibility = View.GONE
         }
 
         handleTopRatedMoviesState()
@@ -261,6 +262,7 @@ private fun retryToConnect(){
                     }
 
                 }
+            if (upComingAdapter.itemCount >0) mainFragmentBinder.upcomingProgress.visibility = View.GONE
         }
     }
     private fun handleTopRatedMoviesState(){
@@ -294,6 +296,7 @@ private fun retryToConnect(){
                     }
 
                 }
+            if (topRatedAdapter.itemCount >0) mainFragmentBinder.topRatedProgress.visibility = View.GONE
         }
     }
 

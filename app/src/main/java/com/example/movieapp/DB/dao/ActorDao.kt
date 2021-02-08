@@ -14,5 +14,7 @@ interface ActorDao {
     suspend fun insertActor(actor:ActorData)
     @Query("select * from actordata where id =:actorId " )
     fun getActorData(actorId: Int ):Flow<ActorData>
+    @Query("delete from ActorData")
+    fun deleteAllData()
 
 }

@@ -15,8 +15,7 @@ import javax.inject.Singleton
 object DataBaseModule{
     @Singleton
     @Provides
-    fun  dataBaseProvider(@ApplicationContext context: Context) =
-        Room.databaseBuilder(context,AppDatabase::class.java,"MovieDB").allowMainThreadQueries().build()
+    fun  dataBaseProvider(@ApplicationContext context: Context) =AppDatabase.getInstance(context)
     @Singleton
     @Provides
     fun provideMoviesDao(dataBase: AppDatabase)=dataBase.movieDao()
